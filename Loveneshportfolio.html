@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lovenesh | Portfolio</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.12);
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border: #1f2937;
+      --chip-bg: #020617;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(15, 23, 42, 0.96), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.9rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 20% 20%, #22c55e, #16a34a 50%, #0f172a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #ecfdf5;
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.3),
+        0 18px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-role {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 0.1rem 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.15rem;
+      width: 0;
+      height: 1.5px;
+      background: linear-gradient(to right, #22c55e, #4ade80);
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.25rem 1.25rem 3rem;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr);
+      gap: 2.5rem;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3.5fr) minmax(0, 2.8fr);
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-intro-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.18), transparent 60%);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-intro-eyebrow span.dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.35);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw + 1rem, 2.9rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #bbf7d0, #22c55e, #4ade80);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 34rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1.4rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta span.label {
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.7rem;
+      margin-right: 0.35rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.55rem 1.2rem;
+      font-size: 0.86rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.2s ease,
+        background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #4ade80, #22c55e 48%, #15803d 100%);
+      color: #022c22;
+      box-shadow: 0 12px 35px rgba(34, 197, 94, 0.46);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-0.5px) translateZ(0);
+      box-shadow: 0 16px 45px rgba(34, 197, 94, 0.6);
+    }
+
+    .btn-ghost {
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.1), transparent 70%);
+      border-color: rgba(148, 163, 184, 0.4);
+      color: var(--text);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(148, 163, 184, 0.7);
+      background-color: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-primary span.icon,
+    .btn-ghost span.icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.2rem;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.16rem 0.6rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    /* hero right */
+    .hero-card {
+      border-radius: 1.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      background:
+        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.18), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(37, 99, 235, 0.2), transparent 55%),
+        linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+      padding: 1.2rem 1.2rem 1.15rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 22px 55px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(148, 163, 184, 0.2) inset;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-card-title {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+    }
+
+    .hero-card-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      background: rgba(22, 163, 74, 0.12);
+      font-size: 0.7rem;
+      color: #bbf7d0;
+    }
+
+    .hero-card-status span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.4);
+    }
+
+    .hero-card-body {
+      margin-top: 0.4rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background: radial-gradient(circle at 10% 0, rgba(34, 197, 94, 0.12), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.12), transparent 55%),
+        linear-gradient(150deg, #020617, #020617);
+      padding: 0.85rem 0.9rem 0.95rem;
+    }
+
+    .hero-card-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.9rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #64748b;
+    }
+
+    .hero-card-value {
+      font-size: 0.82rem;
+      color: var(--text);
+      text-align: right;
+    }
+
+    .hero-card-value span.sub {
+      display: block;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 0.05rem;
+    }
+
+    .hero-card-skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.35rem;
+      margin-top: 0.2rem;
+    }
+
+    .hero-card-skills .chip {
+      background-color: rgba(15, 23, 42, 0.9);
+      border-color: rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+      padding: 0.1rem 0.6rem;
+    }
+
+    .hero-card-footer {
+      margin-top: 0.65rem;
+      padding-top: 0.55rem;
+      border-top: 1px dashed rgba(51, 65, 85, 0.8);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .hero-card-footer span.highlight {
+      color: #bbf7d0;
+    }
+
+    .hero-card-footer span.badge {
+      border-radius: 999px;
+      padding: 0.16rem 0.65rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* GRID LAYOUT BELOW HERO */
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 1.8rem;
+      align-items: flex-start;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    section {
+      border-radius: 1.1rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background:
+        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.18), transparent 65%),
+        linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+      padding: 1.1rem 1.1rem 1.05rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+      position: relative;
+      overflow: hidden;
+    }
+
+    section.section-alt {
+      background:
+        radial-gradient(circle at 100% 0, rgba(37, 99, 235, 0.18), transparent 65%),
+        linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+    }
+
+    .section-tag {
+      font-size: 0.74rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+      background-color: rgba(15, 23, 42, 0.85);
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0.25rem;
+      top: 0.25rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.4);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 0.28rem;
+      top: 0.55rem;
+      bottom: -0.75rem;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(148, 163, 184, 0.5), transparent);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: baseline;
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-role {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .timeline-meta {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    .timeline-org {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 0.05rem;
+    }
+
+    .timeline-location {
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-list {
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-list li {
+      position: relative;
+      padding-left: 0.9rem;
+      margin-bottom: 0.18rem;
+    }
+
+    .timeline-list li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: #6b7280;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 0.18rem 0.6rem;
+      font-size: 0.72rem;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background-color: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+    }
+
+    .pill-strong {
+      border-color: rgba(34, 197, 94, 0.7);
+      background-color: rgba(22, 163, 74, 0.16);
+      color: #bbf7d0;
+    }
+
+    .project-card {
+      border-radius: 0.9rem;
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      background-color: rgba(15, 23, 42, 0.93);
+      padding: 0.75rem 0.85rem;
+      margin-top: 0.3rem;
+    }
+
+    .project-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .project-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    .project-tech {
+      font-size: 0.76rem;
+      color: #9ca3af;
+      margin-bottom: 0.25rem;
+    }
+
+    .project-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .list-compact {
+      list-style: none;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .list-compact li {
+      position: relative;
+      padding-left: 0.85rem;
+      margin-bottom: 0.12rem;
+    }
+
+    .list-compact li::before {
+      content: "•";
+      position: absolute;
+      left: 0.1rem;
+      color: #6b7280;
+    }
+
+    footer {
+      border-top: 1px solid rgba(30, 64, 175, 0.8);
+      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.12), transparent 60%),
+        #020617;
+      padding: 1rem 1.25rem 1.3rem;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: #9ca3af;
+    }
+
+    .footer-links span.icon {
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .shell {
+        padding-inline: 1rem;
+      }
+
+      section {
+        border-radius: 1rem;
+      }
+
+      .hero-card {
+        border-radius: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          <div class="logo">L</div>
+          <div class="brand-text">
+            <div class="brand-name">Lovenesh</div>
+            <div class="brand-role">Aspiring Software Engineer</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#certifications">Certifications</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="shell">
+        <!-- HERO -->
+        <section class="hero">
+          <div>
+            <div class="hero-intro-eyebrow">
+              <span class="dot"></span>
+              <span>Computer Science · UPES</span>
+            </div>
+            <h1 class="hero-title">
+              Hi, I’m <span>Lovenesh</span> —
+              building reliable, modern software.
+            </h1>
+            <p class="hero-subtitle">
+              B.Tech Computer Science student at the University of Petroleum and Energy Studies, Dehradun (UPES),
+              with hands-on experience in web development, cloud computing, and practical project work. I enjoy solving
+              real-world problems with clean code and scalable systems.
+            </p>
+            <div class="hero-meta">
+              <div>
+                <span class="label">Email</span>
+                <span>lucky55yadav@gmail.com</span>
+              </div>
+              <div>
+                <span class="label">Phone</span>
+                <span>+91 96255 80298</span>
+              </div>
+              <div>
+                <span class="label">Location</span>
+                <span>India · Open to internships</span>
+              </div>
+            </div>
+            <div class="hero-actions">
+              <a href="mailto:lucky55yadav@gmail.com" class="btn-primary">
+                <span class="icon">✉️</span>
+                <span>Contact me</span>
+              </a>
+              <a href="#experience" class="btn-ghost">
+                <span class="icon">↘</span>
+                <span>View experience</span>
+              </a>
+            </div>
+            <div class="hero-tags">
+              <div class="chip">
+                <span class="chip-dot"></span>
+                Cloud & Web Development
+              </div>
+              <div class="chip">C</div>
+              <div class="chip">JavaScript</div>
+              <div class="chip">Python</div>
+              <div class="chip">AWS & Azure</div>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Profile snapshot">
+            <div class="hero-card-header">
+              <div class="hero-card-title">Snapshot · 2025</div>
+              <div class="hero-card-status">
+                <span class="dot"></span>
+                Actively looking for SDE internships
+              </div>
+            </div>
+            <div class="hero-card-body">
+              <div class="hero-card-row">
+                <div class="hero-card-label">Education</div>
+                <div class="hero-card-value">
+                  B.Tech CSE · UPES
+                  <span class="sub">2023 – Present</span>
+                </div>
+              </div>
+              <div class="hero-card-row">
+                <div class="hero-card-label">CGPA</div>
+                <div class="hero-card-value">
+                  7.1 / 10.0
+                  <span class="sub">71%</span>
+                </div>
+              </div>
+              <div class="hero-card-row">
+                <div class="hero-card-label">Focus</div>
+                <div class="hero-card-value">
+                  Web Development, Cloud, DSA
+                  <span class="sub">CS Fundamentals: OS, DBMS, CN</span>
+                </div>
+              </div>
+              <div class="hero-card-row">
+                <div class="hero-card-label">Core Skills</div>
+                <div class="hero-card-value">
+                  <div class="hero-card-skills">
+                    <span class="chip">C</span>
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">MySQL</span>
+                    <span class="chip">MongoDB</span>
+                    <span class="chip">Git & GitHub</span>
+                    <span class="chip">AWS</span>
+                    <span class="chip">Azure</span>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-card-footer">
+                <span>Soft skills: <span class="highlight">Communication</span>, Leadership &amp; Teamwork</span>
+                <span class="badge">Building projects &amp; learning by doing</span>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <!-- GRID BELOW HERO -->
+        <div class="grid">
+          <!-- LEFT COLUMN -->
+          <div class="column">
+            <section id="about">
+              <div class="section-header">
+                <h2 class="section-title">About</h2>
+                <span class="section-tag">Who I am</span>
+              </div>
+              <p style="font-size:0.84rem; color:var(--text-muted);">
+                I’m a Computer Science undergrad who enjoys understanding how systems work end to end — from algorithms
+                and operating systems to practical web apps and cloud deployments. My recent experience includes
+                internships where I worked on web development, contributed to social initiatives, and strengthened my
+                ability to quickly learn new tools and concepts.
+              </p>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-top:0.4rem;">
+                I like solving problems with clean, maintainable code and I’m especially interested in roles that let me
+                combine <strong>cloud platforms</strong>, <strong>databases</strong>, and <strong>web technologies</strong> to build useful products.
+              </p>
+            </section>
+
+            <section id="experience" class="section-alt">
+              <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <span class="section-tag">Internships &amp; work</span>
+              </div>
+              <div class="timeline">
+                <article class="timeline-item">
+                  <div class="timeline-header">
+                    <div class="timeline-role">Intern — Simply Entertaining Apps Pvt Ltd</div>
+                    <div class="timeline-meta">Gurgaon (Hybrid) · Jun 2025 – Jul 2025</div>
+                  </div>
+                  <div class="timeline-org">Web development &amp; project-based learning</div>
+                  <ul class="timeline-list">
+                    <li>Completed a 2‑month internship focused on modern web development and real project work.</li>
+                    <li>Actively participated in assigned tasks, quickly grasping new concepts and internal processes.</li>
+                    <li>Recognized for being inquisitive, hardworking, and conceptually strong.</li>
+                  </ul>
+                  <div class="pill-row">
+                    <span class="pill">Web Development</span>
+                    <span class="pill">Team Collaboration</span>
+                    <span class="pill">Problem Solving</span>
+                  </div>
+                </article>
+
+                <article class="timeline-item">
+                  <div class="timeline-header">
+                    <div class="timeline-role">Social Intern — Umoya Sports Organisation</div>
+                    <div class="timeline-meta">Delhi (Hybrid) · Jun 2024 – Jul 2024</div>
+                  </div>
+                  <div class="timeline-org">Non-profit · Social impact</div>
+                  <div class="timeline-location">Supporting physically abled children and operations</div>
+                  <ul class="timeline-list">
+                    <li>Created and managed Excel-based lists to improve organisation and coordination of activities.</li>
+                    <li>Supported physically abled children through various programs to enhance well‑being and development.</li>
+                  </ul>
+                  <div class="pill-row">
+                    <span class="pill">Excel &amp; Data Organisation</span>
+                    <span class="pill">Empathy</span>
+                    <span class="pill">Teamwork</span>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section id="projects">
+              <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <span class="section-tag">What I’ve built</span>
+              </div>
+
+              <article class="project-card">
+                <div class="project-title-row">
+                  <h3 class="project-title">Grocery Management System</h3>
+                  <span class="project-tag">Individual project</span>
+                </div>
+                <div class="project-tech">Tech: Python</div>
+                <p class="project-desc">
+                  A Python-based Grocery Management System that simulates key e‑commerce and inventory workflows while
+                  keeping the interface simple and easy to use.
+                </p>
+                <ul class="list-compact">
+                  <li>Implements searching and filtering of grocery items.</li>
+                  <li>Supports tags, add to cart, remove from cart, and a billing page.</li>
+                  <li>Designed to be extendable for more complex inventory and user features.</li>
+                </ul>
+              </article>
+            </section>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="column">
+            <section id="skills" class="section-alt">
+              <div class="section-header">
+                <h2 class="section-title">Skills</h2>
+                <span class="section-tag">Tech &amp; soft skills</span>
+              </div>
+
+              <h3 style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.14em; color:#9ca3af; margin-bottom:0.25rem;">
+                Technical
+              </h3>
+              <div class="pill-row">
+                <span class="pill pill-strong">C</span>
+                <span class="pill pill-strong">JavaScript</span>
+                <span class="pill pill-strong">Python</span>
+                <span class="pill">MySQL</span>
+                <span class="pill">MongoDB</span>
+                <span class="pill">Git &amp; GitHub</span>
+                <span class="pill">VS Code</span>
+                <span class="pill">AWS</span>
+                <span class="pill">Azure</span>
+                <span class="pill">Data Structures &amp; Algorithms</span>
+                <span class="pill">Operating Systems</span>
+                <span class="pill">DBMS</span>
+                <span class="pill">Computer Networks</span>
+              </div>
+
+              <h3 style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.14em; color:#9ca3af; margin:0.85rem 0 0.25rem;">
+                Soft skills
+              </h3>
+              <div class="pill-row">
+                <span class="pill pill-strong">Communication</span>
+                <span class="pill pill-strong">Leadership</span>
+                <span class="pill pill-strong">Teamwork</span>
+                <span class="pill">Adaptability</span>
+                <span class="pill">Curiosity</span>
+                <span class="pill">Work Ethic</span>
+              </div>
+            </section>
+
+            <section id="certifications">
+              <div class="section-header">
+                <h2 class="section-title">Certifications</h2>
+                <span class="section-tag">Cloud &amp; more</span>
+              </div>
+
+              <ul class="list-compact">
+                <li>AWS Certified Cloud Practitioner · 2025</li>
+                <li>Gold level badge in Cloud Computing · Google · 2023</li>
+                <li>Cleared Cloud Foundation · AWS · 2025</li>
+                <li>AWS Academy Graduate – Cloud Architecting</li>
+                <li>Deloitte Cyber Job Simulation</li>
+                <li>SAWIT.AI Learnathon</li>
+                <li>UPES – AZ‑900</li>
+                <li>AWS Academy Cloud Foundations</li>
+              </ul>
+            </section>
+
+            <section>
+              <div class="section-header">
+                <h2 class="section-title">Profiles &amp; Links</h2>
+                <span class="section-tag">Stay connected</span>
+              </div>
+
+              <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:0.35rem;">
+                Explore some of my code, problem‑solving practice, and professional presence:
+              </p>
+
+              <div class="pill-row">
+                <a href="https://www.linkedin.com/in/Lovenesh" target="_blank" rel="noreferrer" class="pill pill-strong">
+                  LinkedIn / Lovenesh
+                </a>
+                <a href="https://github.com/LoveneshYadav" target="_blank" rel="noreferrer" class="pill">
+                  GitHub / LoveneshYadav
+                </a>
+                <a href="https://leetcode.com/Lovenesh" target="_blank" rel="noreferrer" class="pill">
+                  LeetCode / Lovenesh
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Lovenesh. Crafted from my resume and ongoing work.</div>
+        <div class="footer-links">
+          <a href="mailto:lucky55yadav@gmail.com">
+            <span class="icon">✉️</span>
+            <span>Email</span>
+          </a>
+          <a href="https://github.com/LoveneshYadav" target="_blank" rel="noreferrer">
+            <span class="icon">💻</span>
+            <span>GitHub</span>
+          </a>
+          <a href="https://leetcode.com/Lovenesh" target="_blank" rel="noreferrer">
+            <span class="icon">🧩</span>
+            <span>LeetCode</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
