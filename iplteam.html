@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chennai Super Kings - Fan Hub</title>
+
+  <!-- Simple, modern styling -->
+  <style>
+    :root {
+      --primary: #f9d342;
+      --primary-dark: #f1c40f;
+      --secondary: #1a3b7b;
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --text: #f5f5f5;
+      --muted: #9ea5b1;
+      --card-bg: #10172a;
+      --danger: #e74c3c;
+      --success: #2ecc71;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.35);
+      --shadow-subtle: 0 10px 25px rgba(0, 0, 0, 0.25);
+      --blur: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #213b6c 0, #050816 40%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(var(--blur));
+      background: linear-gradient(to right, rgba(5, 8, 22, 0.96), rgba(26, 59, 123, 0.96));
+      border-bottom: 1px solid rgba(249, 211, 66, 0.18);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.7rem 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 40%;
+      background: radial-gradient(circle at 30% 20%, #fff7c2 0, var(--primary) 40%, var(--primary-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1a237e;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.14), 0 14px 28px rgba(0, 0, 0, 0.55);
+      font-size: 0.9rem;
+    }
+
+    .logo span:last-child {
+      opacity: 0.8;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      color: var(--muted);
+      transition: color 0.18s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--primary), #fff3b0);
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background: none;
+      color: var(--text);
+      transition: all 0.18s ease-out;
+      white-space: nowrap;
+    }
+
+    .btn-outline {
+      border-color: rgba(249, 211, 66, 0.7);
+      background: rgba(9, 14, 32, 0.9);
+    }
+
+    .btn-outline:hover {
+      background: linear-gradient(to right, rgba(249, 211, 66, 0.1), rgba(255, 255, 255, 0.16));
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 20% 0, #fffdea 0, var(--primary) 50%, var(--primary-dark) 100%);
+      color: #20213a;
+      font-weight: 600;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .nav-hamburger span {
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 2.6rem 1.3rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .section-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.18rem 0.65rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: radial-gradient(circle at 10% 0, rgba(249, 211, 66, 0.25) 0, rgba(12, 18, 42, 0.96) 45%, rgba(5, 8, 22, 0.96) 100%);
+      border: 1px solid rgba(249, 211, 66, 0.32);
+    }
+
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #e6ffb3 0, #7eed51 50%, #34d399 100%);
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.75);
+    }
+
+    /* Hero */
+    .hero {
+      padding-top: 2.5rem;
+      padding-bottom: 1.8rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.18rem 0.75rem 0.18rem 0.2rem;
+      border-radius: var(--radius-pill);
+      background: rgba(6, 12, 36, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .hero-badge span:first-child {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, #fffaf0 0, var(--primary) 55%, var(--primary-dark) 100%);
+      color: #222;
+      font-size: 0.78rem;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-badge strong {
+      color: #e5e7eb;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, #fffbe6, var(--primary), #fbbf24);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 0.98rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .meta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #e6ffb3 0, #7eed51 50%, #34d399 100%);
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.75);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-footnote {
+      font-size: 0.75rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-footnote span {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 1.4rem 1.3rem 1.1rem;
+      border-radius: 28px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: radial-gradient(circle at 0 0, rgba(249, 211, 66, 0.15), rgba(15, 23, 42, 0.98) 55%, #020617 100%);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-bg-ring {
+      position: absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at 20% 0, rgba(245, 240, 193, 0.5) 0, transparent 50%),
+        radial-gradient(circle at 110% 10%, rgba(249, 211, 66, 0.3) 0, transparent 55%),
+        radial-gradient(circle at 50% 120%, rgba(59, 130, 246, 0.4) 0, transparent 60%);
+      opacity: 0.32;
+      pointer-events: none;
+    }
+
+    .hero-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-team {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .hero-team-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 20% 0, #fff7c2 0, var(--primary) 45%, var(--primary-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1a237e;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9), 0 12px 28px rgba(0, 0, 0, 0.65);
+    }
+
+    .hero-team-text small {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-team-text div {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-tag span {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #e6ffb3 0, #7eed51 50%, #34d399 100%);
+      box-shadow: 0 0 8px rgba(52, 211, 153, 0.7);
+    }
+
+    .hero-player {
+      position: relative;
+      margin-top: 0.6rem;
+      margin-bottom: 1.1rem;
+      border-radius: 24px;
+      background: radial-gradient(circle at 20% 0, rgba(248, 250, 252, 0.05) 0, rgba(15, 23, 42, 0.96) 40%, #020617 100%);
+      padding: 0.85rem 0.8rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-player-text small {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-player-text h3 {
+      font-size: 1rem;
+      margin-top: 0.1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-player-text p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-player-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .hero-player-stat-pill {
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .hero-player-figure {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-player-silhouette {
+      width: 100%;
+      max-width: 130px;
+      aspect-ratio: 3 / 4;
+      border-radius: 26px;
+      background:
+        linear-gradient(145deg, rgba(249, 211, 66, 0.05), rgba(30, 64, 175, 0.95)),
+        radial-gradient(circle at 50% 0, rgba(249, 211, 66, 0.5), transparent 65%);
+      border: 1px solid rgba(249, 211, 66, 0.55);
+      box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-player-number {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: rgba(248, 250, 252, 0.08);
+    }
+
+    .hero-player-body {
+      position: absolute;
+      inset: 20% 15% 0;
+      border-radius: 999px 999px 20px 20px;
+      background: linear-gradient(160deg, #f9d342 0, #fbbf24 35%, #f97316 100%);
+      box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(249, 211, 66, 0.45);
+    }
+
+    .hero-player-head {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #f9e2c0 0, #eab08a 50%, #c97f5b 100%);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-player-helmet {
+      position: absolute;
+      top: 6%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 24px;
+      border-radius: 999px 999px 45% 45%;
+      background: linear-gradient(120deg, #fef9c3 0, var(--primary) 30%, var(--primary-dark) 100%);
+      box-shadow:
+        0 8px 15px rgba(0, 0, 0, 0.4),
+        0 0 10px rgba(249, 211, 66, 0.65);
+    }
+
+    .hero-player-base {
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      bottom: 8%;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 50% 0, rgba(15, 23, 42, 0.9), rgba(3, 7, 18, 1));
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.95);
+    }
+
+    .hero-player-base::after {
+      content: "";
+      position: absolute;
+      inset: 4px 8px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.45);
+    }
+
+    .hero-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      position: relative;
+      z-index: 1;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .hero-footer-metric {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-footer-metric strong {
+      color: #e5e7eb;
+    }
+
+    .hero-footer-legend {
+      text-align: right;
+    }
+
+    /* Cards & grids */
+    .grid {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-subtle);
+      padding: 1rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.4rem;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .card-subtitle {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.14rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    /* Schedule */
+    .schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) auto;
+      gap: 0.5rem;
+      align-items: center;
+      padding: 0.45rem 0.55rem;
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.7);
+    }
+
+    .schedule-date {
+      font-weight: 500;
+    }
+
+    .schedule-meta {
+      color: var(--muted);
+    }
+
+    .schedule-status {
+      font-size: 0.72rem;
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+    }
+
+    .status-upcoming {
+      color: #facc15;
+      border-color: rgba(250, 204, 21, 0.7);
+    }
+
+    .status-won {
+      color: var(--success);
+      border-color: rgba(34, 197, 94, 0.7);
+    }
+
+    .status-lost {
+      color: var(--danger);
+      border-color: rgba(248, 113, 113, 0.7);
+    }
+
+    /* Players */
+    .player-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .player-card {
+      border-radius: 18px;
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.96), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 0.85rem 0.8rem;
+      font-size: 0.78rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .player-role {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .player-name {
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .player-stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.3rem;
+      color: var(--muted);
+    }
+
+    .player-label {
+      font-size: 0.68rem;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .player-value {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .stat-card {
+      border-radius: 16px;
+      background: radial-gradient(circle at 0 0, rgba(30, 64, 175, 0.9), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(129, 140, 248, 0.7);
+      padding: 0.8rem 0.75rem;
+    }
+
+    .stat-label {
+      color: rgba(191, 219, 254, 0.95);
+      font-size: 0.76rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .stat-footnote {
+      font-size: 0.7rem;
+      color: rgba(191, 219, 254, 0.9);
+      margin-top: 0.18rem;
+    }
+
+    .stat-trend {
+      font-size: 0.72rem;
+      margin-top: 0.25rem;
+      color: #6ee7b7;
+    }
+
+    /* News */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .news-card {
+      border-radius: 18px;
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-image {
+      height: 120px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .news-body {
+      padding: 0.75rem 0.8rem 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .news-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+
+    .news-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .news-excerpt {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .news-link {
+      margin-top: 0.35rem;
+      font-size: 0.74rem;
+      color: #bfdbfe;
+    }
+
+    /* Fan zone */
+    .fan-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+
+    .poll-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 0.4rem 0 0.8rem;
+      font-size: 0.8rem;
+    }
+
+    .poll-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .poll-option label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+    }
+
+    .poll-option input {
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    .poll-bar {
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(30, 64, 175, 0.5);
+      overflow: hidden;
+    }
+
+    .poll-bar-inner {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #f9d342, #f97316);
+      width: 0;
+      transition: width 0.35s ease-out;
+    }
+
+    .poll-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .social-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.8rem;
+    }
+
+    .social-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.6rem;
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.97);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .social-label {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .social-label span:first-child {
+      font-size: 0.78rem;
+    }
+
+    .social-label span:last-child {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .social-pill {
+      font-size: 0.72rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: #bfdbfe;
+    }
+
+    /* Feedback */
+    .feedback-form {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+      font-size: 0.82rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .field label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .input,
+    .textarea,
+    select {
+      width: 100%;
+      padding: 0.4rem 0.5rem;
+      border-radius: 10px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.8rem;
+      outline: none;
+      resize: vertical;
+      min-height: 34px;
+    }
+
+    .input:focus,
+    .textarea:focus,
+    select:focus {
+      border-color: rgba(249, 211, 66, 0.8);
+      box-shadow: 0 0 0 1px rgba(249, 211, 66, 0.4);
+    }
+
+    .textarea {
+      min-height: 70px;
+    }
+
+    .feedback-info {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .feedback-highlight {
+      font-size: 0.82rem;
+      margin-bottom: 0.3rem;
+      color: #e5e7eb;
+    }
+
+    .feedback-taglist {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feedback-tag {
+      padding: 0.16rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.85);
+      color: var(--muted);
+    }
+
+    .feedback-status {
+      font-size: 0.74rem;
+      color: #6ee7b7;
+      display: none;
+      margin-top: 0.3rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95), #020617);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0.9rem 1.3rem 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1.1fr);
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .section {
+        padding-inline: 1rem;
+      }
+
+      .grid-3,
+      .player-grid,
+      .news-grid,
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .fan-layout,
+      .feedback-form {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-hamburger {
+        display: flex;
+      }
+
+      .nav-menu-open .nav-links,
+      .nav-menu-open .nav-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        padding: 0.6rem 1.3rem 0.9rem;
+        background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.98));
+        border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+        gap: 0.7rem;
+      }
+
+      .hero {
+        padding-top: 1.7rem;
+      }
+
+      .hero-card {
+        border-radius: 24px;
+      }
+
+      .grid-3,
+      .player-grid,
+      .news-grid,
+      .stats-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Navigation -->
+    <header>
+      <nav class="nav" id="top">
+        <a href="#top" class="logo">
+          <div class="logo-mark">CSK</div>
+          <span>Chennai Super Kings</span>
+          <span>Official Fan Hub</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">Team</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#players">Players</a>
+          <a href="#stats">Stats</a>
+          <a href="#news">News</a>
+          <a href="#fan-zone">Fan Zone</a>
+          <a href="#feedback">Feedback</a>
+        </div>
+        <div class="nav-cta">
+          <button class="btn btn-outline" onclick="scrollToSection('schedule')">
+            Next Match
+          </button>
+          <button class="btn btn-primary" onclick="scrollToSection('fan-zone')">
+            Join the Pride
+          </button>
+        </div>
+        <button class="nav-hamburger" aria-label="Toggle navigation menu" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero / About -->
+      <section class="section hero" id="about">
+        <div>
+          <div class="hero-badge-row">
+            <div class="hero-badge">
+              <span>★</span>
+              <span>4-time IPL Champions</span>
+            </div>
+            <span class="pill">
+              <span class="pill-dot"></span>
+              Live the Whistle Podu life.
+            </span>
+          </div>
+
+          <h1 class="hero-title">
+            Welcome to the
+            <span>Chennai Super Kings</span>
+            Fan Universe
+          </h1>
+          <p class="hero-tagline">
+            One destination for everything CSK &mdash; fixtures, player profiles, match stats, news, and a vibrant fan
+            community.
+            Tailor-made for fans who bleed yellow.
+          </p>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span class="meta-dot"></span>
+              2026 IPL Season • League Stage
+            </div>
+            <div class="hero-meta-item">
+              MA Chidambaram Stadium, Chennai
+            </div>
+            <div class="hero-meta-item">
+              Unofficial fan-made experience
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="scrollToSection('players')">
+              Explore Squad
+            </button>
+            <button class="btn btn-outline" onclick="scrollToSection('fan-zone')">
+              Vote in Today&rsquo;s Poll
+            </button>
+          </div>
+
+          <div class="hero-footnote">
+            <span>i</span>
+            <div>
+              This is an educational, fan-created website developed using HTML, CSS and a light touch of JavaScript.
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-bg-ring"></div>
+            <div class="hero-top-row">
+              <div class="hero-team">
+                <div class="hero-team-logo">CSK</div>
+                <div class="hero-team-text">
+                  <small>Chennai Super Kings</small>
+                  <div>Match Centre</div>
+                </div>
+              </div>
+              <div class="hero-tag">
+                <span></span>
+                Live score tracker
+              </div>
+            </div>
+
+            <div class="hero-player">
+              <div class="hero-player-text">
+                <small>Featured Captain</small>
+                <h3>MS Dhoni</h3>
+                <p>
+                  The heartbeat of CSK &ndash; calm, composed and legendary in yellow.
+                </p>
+                <div class="hero-player-meta">
+                  <div class="hero-player-stat-pill">
+                    Matches: <strong>250+</strong>
+                  </div>
+                  <div class="hero-player-stat-pill">
+                    Titles with CSK: <strong>4</strong>
+                  </div>
+                  <div class="hero-player-stat-pill">
+                    Role: <strong>Captain &amp; Wicketkeeper</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-player-figure">
+                <div class="hero-player-silhouette">
+                  <div class="hero-player-number">7</div>
+                  <div class="hero-player-body"></div>
+                  <div class="hero-player-head"></div>
+                  <div class="hero-player-helmet"></div>
+                  <div class="hero-player-base"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-footer">
+              <div class="hero-footer-metric">
+                <span class="meta-dot"></span>
+                <span>Fan confidence: <strong>92%</strong></span>
+              </div>
+              <div class="hero-footer-legend">
+                <div>Next up: CSK vs MI</div>
+                <div>Saturday • 7:30 PM IST</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Schedule -->
+      <section class="section" id="schedule">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Match Schedule</h2>
+            <p class="section-subtitle">
+              Stay on top of every fixture in the 2026 IPL season.
+            </p>
+          </div>
+          <span class="pill">
+            <span class="pill-dot"></span>
+            All timings in IST • Subject to official changes
+          </span>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Upcoming Home Fixtures</h3>
+                <p class="card-subtitle">MA Chidambaram Stadium, Chennai</p>
+              </div>
+              <span class="badge">Home</span>
+            </div>
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div>
+                  <div class="schedule-date">CSK vs MI</div>
+                  <div class="schedule-meta">Sat, 12 Apr • 7:30 PM</div>
+                </div>
+                <div class="schedule-meta">Chepauk</div>
+                <div class="schedule-status status-upcoming">Upcoming</div>
+              </div>
+              <div class="schedule-item">
+                <div>
+                  <div class="schedule-date">CSK vs RCB</div>
+                  <div class="schedule-meta">Wed, 16 Apr • 7:30 PM</div>
+                </div>
+                <div class="schedule-meta">Chepauk</div>
+                <div class="schedule-status status-upcoming">Upcoming</div>
+              </div>
+              <div class="schedule-item">
+                <div>
+                  <div class="schedule-date">CSK vs KKR</div>
+                  <div class="schedule-meta">Sun, 20 Apr • 3:30 PM</div>
+                </div>
+                <div class="schedule-meta">Chepauk</div>
+                <div class="schedule-status status-upcoming">Upcoming</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Recent Results</h3>
+                <p class="card-subtitle">Track how the team is performing.</p>
+              </div>
+              <span class="badge">Form Guide</span>
+            </div>
+            <div class="schedule-list">
+              <div class="schedule-item">
+                <div>
+                  <div class="schedule-date">CSK vs SRH</div>
+                  <div class="schedule-meta">Won by 7 wickets</div>
+                </div>
+                <div class="schedule-meta">Hyderabad</div>
+                <div class="schedule-status status-won">Won</div>
+              </div>
+              <div class="schedule-item">
+                <div>
+                  <div class="schedule-date">CSK vs GT</div>
+                  <div class="schedule-meta">Lost by 3 runs</div>
+                </div>
+                <div class="schedule-meta">Ahmedabad</div>
+                <div class="schedule-status status-lost">Lost</div>
+              </div>
+              <div class="schedule-item">
+                <div>
+                  <div class="schedule-date">CSK vs DC</div>
+                  <div class="schedule-meta">Won by 25 runs</div>
+                </div>
+                <div class="schedule-meta">Delhi</div>
+                <div class="schedule-status status-won">Won</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Key Season Milestones</h3>
+                <p class="card-subtitle">Circle the biggest dates in yellow.</p>
+              </div>
+              <span class="badge">Highlights</span>
+            </div>
+            <ul class="schedule-list">
+              <li>
+                <strong>El Clasico of IPL:</strong> CSK vs MI at Wankhede.
+              </li>
+              <li>
+                <strong>Southern Derby:</strong> CSK vs SRH at Chepauk.
+              </li>
+              <li>
+                <strong>Final League Game:</strong> CSK vs RCB &mdash; could decide playoff spots.
+              </li>
+              <li>
+                <strong>Playoff Window:</strong> Last week of May, venues as per IPL schedule.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Players -->
+      <section class="section" id="players">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Squad &amp; Player Profiles</h2>
+            <p class="section-subtitle">
+              Meet the kings of Chennai &mdash; batters, bowlers, all-rounders and our iconic captain.
+            </p>
+          </div>
+          <span class="pill">
+            <span class="pill-dot"></span>
+            Sample stats for demonstration • Not live data
+          </span>
+        </div>
+
+        <div class="player-grid">
+          <article class="player-card">
+            <div class="player-role">Captain • Wicketkeeper</div>
+            <div class="player-name">MS Dhoni</div>
+            <div class="player-stat-row">
+              <span class="player-label">Matches</span>
+              <span class="player-value">250+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Runs</span>
+              <span class="player-value">5000+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Best</span>
+              <span class="player-value">84*</span>
+            </div>
+          </article>
+
+          <article class="player-card">
+            <div class="player-role">Opener • Right-hand bat</div>
+            <div class="player-name">Ruturaj Gaikwad</div>
+            <div class="player-stat-row">
+              <span class="player-label">Matches</span>
+              <span class="player-value">50+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Runs</span>
+              <span class="player-value">1700+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Best</span>
+              <span class="player-value">101*</span>
+            </div>
+          </article>
+
+          <article class="player-card">
+            <div class="player-role">All-rounder</div>
+            <div class="player-name">Ravindra Jadeja</div>
+            <div class="player-stat-row">
+              <span class="player-label">Matches</span>
+              <span class="player-value">210+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Runs</span>
+              <span class="player-value">2600+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Wickets</span>
+              <span class="player-value">140+</span>
+            </div>
+          </article>
+
+          <article class="player-card">
+            <div class="player-role">Fast Bowler</div>
+            <div class="player-name">Deepak Chahar</div>
+            <div class="player-stat-row">
+              <span class="player-label">Matches</span>
+              <span class="player-value">80+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Wickets</span>
+              <span class="player-value">90+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Best</span>
+              <span class="player-value">4/13</span>
+            </div>
+          </article>
+
+          <article class="player-card">
+            <div class="player-role">Middle Order</div>
+            <div class="player-name">Shivam Dube</div>
+            <div class="player-stat-row">
+              <span class="player-label">Matches</span>
+              <span class="player-value">45+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Runs</span>
+              <span class="player-value">900+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Strike Rate</span>
+              <span class="player-value">150+</span>
+            </div>
+          </article>
+
+          <article class="player-card">
+            <div class="player-role">Spinner</div>
+            <div class="player-name">Maheesh Theekshana</div>
+            <div class="player-stat-row">
+              <span class="player-label">Matches</span>
+              <span class="player-value">35+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Wickets</span>
+              <span class="player-value">45+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Economy</span>
+              <span class="player-value">7.3</span>
+            </div>
+          </article>
+
+          <article class="player-card">
+            <div class="player-role">Opening Batter</div>
+            <div class="player-name">Devon Conway</div>
+            <div class="player-stat-row">
+              <span class="player-label">Matches</span>
+              <span class="player-value">30+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Runs</span>
+              <span class="player-value">1100+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Average</span>
+              <span class="player-value">45+</span>
+            </div>
+          </article>
+
+          <article class="player-card">
+            <div class="player-role">All-rounder</div>
+            <div class="player-name">Moeen Ali</div>
+            <div class="player-stat-row">
+              <span class="player-label">Matches</span>
+              <span class="player-value">60+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Runs</span>
+              <span class="player-value">1300+</span>
+            </div>
+            <div class="player-stat-row">
+              <span class="player-label">Wickets</span>
+              <span class="player-value">40+</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Stats -->
+      <section class="section" id="stats">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Season Snapshot &amp; Legacy Stats</h2>
+            <p class="section-subtitle">
+              A quick view of CSK&rsquo;s dominance in the IPL, along with performance indicators for the current season.
+            </p>
+          </div>
+          <span class="pill">
+            <span class="pill-dot"></span>
+            Numbers shown are illustrative for this project.
+          </span>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-label">All-time IPL Titles</div>
+            <div class="stat-value">4</div>
+            <div class="stat-footnote">Second-most titles in IPL history.</div>
+            <div class="stat-trend">Playoff qualification rate: 75% seasons</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-label">Home Win Percentage</div>
+            <div class="stat-value">68%</div>
+            <div class="stat-footnote">Chepauk &mdash; the real Lions&rsquo; den.</div>
+            <div class="stat-trend">Strongest phase: Mid-tournament home stretch.</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-label">Average Powerplay Score (2026)</div>
+            <div class="stat-value">53</div>
+            <div class="stat-footnote">Top-order setting the tone early.</div>
+            <div class="stat-trend">+7 runs vs 2025 season average.</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-label">Death Overs Economy (2026)</div>
+            <div class="stat-value">8.4</div>
+            <div class="stat-footnote">One of the most efficient death attacks.</div>
+            <div class="stat-trend">Improved yorker execution and slower balls.</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- News -->
+      <section class="section" id="news">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">News &amp; Storylines</h2>
+            <p class="section-subtitle">
+              Curated updates, narratives and talking points for every CSK fan ahead of matchday.
+            </p>
+          </div>
+          <span class="pill">
+            <span class="pill-dot"></span>
+            Static content • Replace with live feeds for production
+          </span>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-card">
+            <div class="news-image"
+              style="background-image: linear-gradient(to bottom right, rgba(249,211,66,0.6), rgba(30,64,175,0.9)), url('https://images.pexels.com/photos/1408345/pexels-photo-1408345.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            </div>
+            <div class="news-body">
+              <div class="news-meta">
+                <span>Feature</span>
+                <span>2 min read</span>
+              </div>
+              <h3 class="news-title">How CSK Turned Chepauk into a Fortress</h3>
+              <p class="news-excerpt">
+                A look at the spin-friendly conditions, fan energy and tactical planning that make Chennai a nightmare
+                for visiting teams.
+              </p>
+              <a href="https://www.chennaisuperkings.com" target="_blank" class="news-link" rel="noopener">
+                Read on official CSK site &rarr;
+              </a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-image"
+              style="background-image: linear-gradient(to bottom right, rgba(15,23,42,0.9), rgba(30,64,175,0.8)), url('https://images.pexels.com/photos/2253881/pexels-photo-2253881.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            </div>
+            <div class="news-body">
+              <div class="news-meta">
+                <span>Tactical Preview</span>
+                <span>4 min read</span>
+              </div>
+              <h3 class="news-title">CSK vs MI: The Original Rivalry</h3>
+              <p class="news-excerpt">
+                Breaking down key match-ups, powerplay battles and finishing roles as the two most decorated IPL teams
+                face off again.
+              </p>
+              <a href="https://www.iplt20.com" target="_blank" class="news-link" rel="noopener">
+                Explore full match preview &rarr;
+              </a>
+            </div>
+          </article>
+
+          <article class="news-card">
+            <div class="news-image"
+              style="background-image: linear-gradient(to bottom right, rgba(249,211,66,0.55), rgba(15,23,42,0.95)), url('https://images.pexels.com/photos/1408668/pexels-photo-1408668.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            </div>
+            <div class="news-body">
+              <div class="news-meta">
+                <span>Fan Story</span>
+                <span>3 min read</span>
+              </div>
+              <h3 class="news-title">From Whistle Podu to World Cup Glory</h3>
+              <p class="news-excerpt">
+                How following CSK inspired a generation of fans across Tamil Nadu and beyond to dream big in cricket
+                and life.
+              </p>
+              <a href="https://twitter.com/ChennaiIPL" target="_blank" class="news-link" rel="noopener">
+                Join the conversation on social &rarr;
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Fan Zone -->
+      <section class="section" id="fan-zone">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Fan Zone &amp; Social</h2>
+            <p class="section-subtitle">
+              Participate in live polls, connect on social media, and show your support across platforms.
+            </p>
+          </div>
+          <span class="pill">
+            <span class="pill-dot"></span>
+            Data resets on page refresh • Demo only
+          </span>
+        </div>
+
+        <div class="fan-layout">
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Today&rsquo;s Fan Poll</h3>
+                <p class="card-subtitle">Who will be CSK&rsquo;s key player in the next match?</p>
+              </div>
+              <span class="badge">Interactive</span>
+            </div>
+
+            <form id="poll-form" onsubmit="event.preventDefault(); submitPoll();">
+              <div class="poll-options">
+                <div class="poll-option">
+                  <label>
+                    <input type="radio" name="poll" value="gaikwad" />
+                    Ruturaj Gaikwad
+                  </label>
+                  <div class="poll-bar">
+                    <div class="poll-bar-inner" data-option="gaikwad"></div>
+                  </div>
+                  <span class="poll-percentage" data-option-label="gaikwad">0%</span>
+                </div>
+
+                <div class="poll-option">
+                  <label>
+                    <input type="radio" name="poll" value="jadeja" />
+                    Ravindra Jadeja
+                  </label>
+                  <div class="poll-bar">
+                    <div class="poll-bar-inner" data-option="jadeja"></div>
+                  </div>
+                  <span class="poll-percentage" data-option-label="jadeja">0%</span>
+                </div>
+
+                <div class="poll-option">
+                  <label>
+                    <input type="radio" name="poll" value="dhoni" />
+                    MS Dhoni
+                  </label>
+                  <div class="poll-bar">
+                    <div class="poll-bar-inner" data-option="dhoni"></div>
+                  </div>
+                  <span class="poll-percentage" data-option-label="dhoni">0%</span>
+                </div>
+
+                <div class="poll-option">
+                  <label>
+                    <input type="radio" name="poll" value="other" />
+                    Another CSK star
+                  </label>
+                  <div class="poll-bar">
+                    <div class="poll-bar-inner" data-option="other"></div>
+                  </div>
+                  <span class="poll-percentage" data-option-label="other">0%</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary">
+                Submit Vote
+              </button>
+
+              <div class="poll-footer">
+                <span id="poll-total">Total votes: 0</span>
+                <span>Poll resets when you refresh the page.</span>
+              </div>
+            </form>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Connect with CSK</h3>
+                <p class="card-subtitle">Follow, subscribe and engage across platforms.</p>
+              </div>
+              <span class="badge">Social</span>
+            </div>
+
+            <div class="social-list">
+              <div class="social-item">
+                <div class="social-label">
+                  <span>Official Website</span>
+                  <span>Match tickets, official news &amp; merchandise</span>
+                </div>
+                <a href="https://www.chennaisuperkings.com" target="_blank" rel="noopener" class="social-pill">
+                  Visit Site
+                </a>
+              </div>
+              <div class="social-item">
+                <div class="social-label">
+                  <span>Twitter / X</span>
+                  <span>Instant updates, memes and match reactions</span>
+                </div>
+                <a href="https://twitter.com/ChennaiIPL" target="_blank" rel="noopener" class="social-pill">
+                  Follow @ChennaiIPL
+                </a>
+              </div>
+              <div class="social-item">
+                <div class="social-label">
+                  <span>Instagram</span>
+                  <span>Behind-the-scenes, reels and celebrations</span>
+                </div>
+                <a href="https://www.instagram.com/chennaiipl" target="_blank" rel="noopener" class="social-pill">
+                  Follow on Instagram
+                </a>
+              </div>
+              <div class="social-item">
+                <div class="social-label">
+                  <span>YouTube</span>
+                  <span>Highlights, interviews and special features</span>
+                </div>
+                <a href="https://www.youtube.com/c/ChennaiSuperKings" target="_blank" rel="noopener"
+                  class="social-pill">
+                  Subscribe
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Feedback -->
+      <section class="section" id="feedback">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Mentor &amp; Fan Feedback</h2>
+            <p class="section-subtitle">
+              Share your thoughts on this project website &mdash; design, usability, content and overall experience.
+            </p>
+          </div>
+          <span class="pill">
+            <span class="pill-dot"></span>
+            Form uses front-end only • No data is stored server-side
+          </span>
+        </div>
+
+        <div class="feedback-form">
+          <form id="feedback-form" onsubmit="event.preventDefault(); submitFeedback();">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" class="input" type="text" placeholder="Enter your name" required />
+            </div>
+            <div class="field">
+              <label for="role">You are a&hellip;</label>
+              <select id="role" required>
+                <option value="">Select one</option>
+                <option value="mentor">Mentor / Instructor</option>
+                <option value="student">Fellow student</option>
+                <option value="fan">CSK Fan</option>
+                <option value="other">Other visitor</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="rating">Overall rating (1 &ndash; 5)</label>
+              <input id="rating" class="input" type="number" min="1" max="5" value="5" required />
+            </div>
+            <div class="field">
+              <label for="comments">Feedback &amp; suggestions</label>
+              <textarea id="comments" class="textarea"
+                placeholder="Tell me what worked well and what could be improved (navigation, responsiveness, content, visuals&hellip;)"
+                required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Submit Feedback
+            </button>
+            <div id="feedback-status" class="feedback-status">
+              Thank you for your feedback! (In a real deployment, this would be sent to a server or stored in a
+              database.)
+            </div>
+          </form>
+
+          <div class="feedback-info">
+            <div class="feedback-highlight">About this project</div>
+            <p>
+              This IPL team website is a hands-on project built using HTML, CSS and basic JavaScript. It focuses on:
+            </p>
+            <div class="feedback-taglist">
+              <span class="feedback-tag">Clean, responsive layout</span>
+              <span class="feedback-tag">Section-based navigation</span>
+              <span class="feedback-tag">Player &amp; match information</span>
+              <span class="feedback-tag">Interactive poll for fan engagement</span>
+              <span class="feedback-tag">Feedback form for mentors</span>
+            </div>
+            <p>
+              Feel free to suggest new ideas &mdash; for example, integrating live scores, storing feedback using a
+              backend,
+              or connecting to an official IPL API for real match data.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          &copy; 2026 CSK Fan Hub &mdash; Educational project, not an official Chennai Super Kings product.
+        </div>
+        <div class="footer-links">
+          <a href="#top">Back to top</a>
+          <a href="#about">About</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#players">Players</a>
+          <a href="#fan-zone">Fan Zone</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Smooth scroll helpers
+    function scrollToSection(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      var header = document.querySelector('header');
+      header.classList.toggle('nav-menu-open');
+    }
+
+    // Simple in-memory poll logic
+    var pollVotes = {
+      gaikwad: 0,
+      jadeja: 0,
+      dhoni: 0,
+      other: 0
+    };
+    var pollTotalVotes = 0;
+
+    function submitPoll() {
+      var form = document.getElementById('poll-form');
+      var selected = form.querySelector('input[name="poll"]:checked');
+      if (!selected) {
+        alert('Please select a player before voting.');
+        return;
+      }
+
+      var choice = selected.value;
+      pollVotes[choice]++;
+      pollTotalVotes++;
+      renderPoll();
+    }
+
+    function renderPoll() {
+      var total = pollTotalVotes || 1;
+      var options = ['gaikwad', 'jadeja', 'dhoni', 'other'];
+
+      options.forEach(function (opt) {
+        var percent = Math.round((pollVotes[opt] / total) * 100);
+        var bar = document.querySelector('.poll-bar-inner[data-option="' + opt + '"]');
+        var label = document.querySelector('.poll-percentage[data-option-label="' + opt + '"]');
+        if (bar) {
+          bar.style.width = percent + '%';
+        }
+        if (label) {
+          label.textContent = percent + '%';
+        }
+      });
+
+      var totalEl = document.getElementById('poll-total');
+      if (totalEl) {
+        totalEl.textContent = 'Total votes: ' + pollTotalVotes;
+      }
+    }
+
+    // Feedback form
+    function submitFeedback() {
+      var form = document.getElementById('feedback-form');
+      var status = document.getElementById('feedback-status');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      // For this project, we simply show a thank-you message.
+      status.style.display = 'block';
+      form.reset();
+    }
+  </script>
+</body>
+</html>
+
